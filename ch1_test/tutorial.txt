@@ -1,0 +1,46 @@
+1. wsl 터미널 실행 - 윈도우용 ubuntu-18.04 설치 선행
+2. 계정 생성 - kuuneeee
+3. root 로그인 비번 설정 : sudo passwd root
+4. root 접속 : su -l root
+
+
+### 에러 ###
+
+1. sudo apt-get update -> E: http://security.ubuntu.com precise-security InRelease : 서버 연결 실패
+    1) root 접속
+    2) vi /etc/network/interfaces -> dns-nameservers 8.8.8.8 8.8.4.4 를 추가 -> esc + :wq!로 저장 후 닫기
+    3) vi /etc/resolv.conf -> nameserver 8.8.8.8 nameserver 8.8.4.4 한줄씩 추가 -> esc + :wq!로 저장 후 닫기
+    4) 다시 sudo apt-get update
+
+2. vim 편집시 -> Can't open file for writing
+    1) root 접속
+    또는 
+    2) :w !sudo tee % > /dev/null
+
+3. E: Unable to locate package python3-pip 
+    1) sudo add-apt-repository universe
+    2) sudo apt-get update
+    3) sudo apt-get install python3-pip
+
+4. python3 -m venv ./env 시 -> The virtual environment was not created successfully because ensurepip is not available.
+
+
+### 기타 ###
+
+ubuntu-18.04)
+    전체 계정 확인 : cat /etc/passwd
+    전체 게정 중, 이름만 잘라서 확인 : cut -f1 -d: /etc/passwd
+    useradd를 통해 등록된 계정만 보기 : grep /bin/bash /etc/passwd
+    useradd를 통해 등록된 계정 중, 이름만 잘라서 확인 : grep /bin/bash /etc/passwd | cut -f1 -d:
+    sudo 권한 확인 : sudo whoami -> root 나오면 현재 접속한 계정에 sudo 권한 있는거
+    사용자를 먼저 만든 후 sudo 권한 그룹에 추가 : usermod -aG sudo username
+
+    pip install -r requirements.txt
+        1) pytorch 설치 시 -> torch
+        2) +cu111 이런거 안됨 -> forge나 링크에서 다운 받지 않아서 그런듯 => 나중에 찾아보자
+
+pylint
+    pylint --disable=R,C hello.py -> 검사한 항목 표시 안함 : --disable=R,C
+
+pytest
+    pytest-cov 다운해야 --cov 옵션 쓸수 있음
