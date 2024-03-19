@@ -24,6 +24,7 @@
 
 4. python3 -m venv ./env 시 -> The virtual environment was not created successfully because ensurepip is not available.
 
+5. ubuntu-22.04는 에러 1 없음 -> systemd이 init 프로세스
 
 ### 기타 ###
 
