@@ -44,3 +44,6 @@ pylint
 
 pytest
     pytest-cov 다운해야 --cov 옵션 쓸수 있음
+
+git
+    sudo apt-get install git-all
