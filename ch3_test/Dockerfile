@@ -29,4 +29,3 @@ ENTRYPOINT [ "/bin/bash" ]
     # exec 실행중인 컨테이너에 접속
     # 일회성으로 접속할 수도 있음 : docker exec [contatiner id] tail /var/log/dnf.log
     
-
